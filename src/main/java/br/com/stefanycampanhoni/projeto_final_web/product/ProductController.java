@@ -1,6 +1,7 @@
 package br.com.stefanycampanhoni.projeto_final_web.product;
 
 import br.com.stefanycampanhoni.projeto_final_web.ApiResponseHelper;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> create(ProductDto product) {
+    public ResponseEntity<Product> create(@Valid ProductDto product) {
         return ApiResponseHelper.toResponse(service.create(product), HttpStatus.CREATED);
     }
 
@@ -37,7 +38,7 @@ public class ProductController {
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<Product> update(@PathVariable(name = "id") Integer id,
-                                          ProductDto productDto) {
+                                          @Valid ProductDto productDto) {
         return ApiResponseHelper.toResponse(service.update(id, productDto), HttpStatus.OK);
     }
 
