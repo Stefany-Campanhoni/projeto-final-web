@@ -19,10 +19,9 @@ public class Product {
 
     private Integer barcode;
 
-    @Length(max = 100)
+    @Column(length = 100)
     private String name;
 
-    @Length(max = 255)
     private String description;
 
     @Column(name = "stock_quantity")
