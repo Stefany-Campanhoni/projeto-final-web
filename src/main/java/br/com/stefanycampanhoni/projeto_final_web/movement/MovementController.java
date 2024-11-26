@@ -1,6 +1,6 @@
 package br.com.stefanycampanhoni.projeto_final_web.movement;
 
-import br.com.stefanycampanhoni.projeto_final_web.DomainToResponseConverter;
+import br.com.stefanycampanhoni.projeto_final_web.ApiResponseHelper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +19,11 @@ public class MovementController {
 
     @GetMapping
     public ResponseEntity<List<Movement>> getAll() {
-        return DomainToResponseConverter.toResponse(service.getAll(), HttpStatus.OK);
+        return ApiResponseHelper.toResponse(service.getAll(), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<Movement> create(MovementDto movement) {
-        return DomainToResponseConverter.toResponse(service.create(movement), HttpStatus.CREATED);
+        return ApiResponseHelper.toResponse(service.create(movement), HttpStatus.CREATED);
     }
-
 }

@@ -2,7 +2,6 @@ package br.com.stefanycampanhoni.projeto_final_web.movement;
 
 import br.com.stefanycampanhoni.projeto_final_web.product.Product;
 import br.com.stefanycampanhoni.projeto_final_web.product.ProductService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

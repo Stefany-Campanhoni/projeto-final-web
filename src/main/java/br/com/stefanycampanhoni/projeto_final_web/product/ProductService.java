@@ -36,26 +36,23 @@ public class ProductService {
         repository.deleteById(id);
     }
 
-    public Product update(Integer id, Product newProduct) {
+    public Product update(Integer id, ProductDto newProduct) {
         Product product = this.getProductById(id);
 
-        product.setDescription(newProduct.getDescription());
-        product.setName(newProduct.getName());
-        product.setBarcode(newProduct.getBarcode());
-        product.setStockQuantity(newProduct.getStockQuantity());
-        product.setSituation(newProduct.getSituation());
+        product.setDescription(newProduct.description());
+        product.setName(newProduct.name());
+        product.setBarcode(newProduct.barcode());
+        product.setStockQuantity(newProduct.stockQuantity());
+        product.setSituation(newProduct.situation());
 
-        return product;
+        return repository.save(product);
     }
 
     public Product updateStockQuantity(Integer id, Integer quantity, MovementType type) {
         Product product = this.getProductById(id);
 
-        switch (type) {
-            case ADD -> product.setStockQuantity(product.getStockQuantity() + quantity);
-            case SUB -> product.setStockQuantity(product.getStockQuantity() - quantity);
-        }
+        product.setStockQuantity(type.calculate(product.getStockQuantity(), quantity));
 
-        return this.update(product.getId(), product);
+        return repository.save(product);
     }
 }
