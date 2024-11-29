@@ -23,5 +23,7 @@ public class Movement {
     @Column(name = "product_quantity")
     private Integer productQuantity;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 }
