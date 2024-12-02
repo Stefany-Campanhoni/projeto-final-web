@@ -21,7 +21,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> create(@Valid ProductDto product) {
+    public ResponseEntity<Product> create(@Valid @RequestBody ProductDto product) {
         return ApiResponseHelper.toResponse(service.create(product), HttpStatus.CREATED);
     }
 
@@ -38,7 +38,7 @@ public class ProductController {
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<Product> update(@PathVariable(name = "id") Integer id,
-                                          @Valid ProductDto productDto) {
+                                          @Valid @RequestBody ProductDto productDto) {
         return ApiResponseHelper.toResponse(service.update(id, productDto), HttpStatus.OK);
     }
 
