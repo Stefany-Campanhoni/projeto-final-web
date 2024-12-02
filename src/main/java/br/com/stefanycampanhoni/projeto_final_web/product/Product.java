@@ -1,6 +1,7 @@
 package br.com.stefanycampanhoni.projeto_final_web.product;
 
 import br.com.stefanycampanhoni.projeto_final_web.movement.Movement;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,6 +34,7 @@ public class Product {
 
     private ProductSituation situation;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Movement> movements = new ArrayList<>();
 }

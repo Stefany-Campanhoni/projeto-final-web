@@ -1,6 +1,7 @@
 package br.com.stefanycampanhoni.projeto_final_web.movement;
 
 import br.com.stefanycampanhoni.projeto_final_web.product.Product;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Movement {
     private Integer productQuantity;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 }
